@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'dotenv-rails', groups: [:development, :test] # this has to be here because of load order
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
@@ -11,7 +11,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 gem 'pundit'
-
+gem 'omniauth-google-oauth2', '~> 0.2.1'
+gem 'config'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
