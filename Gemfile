@@ -14,14 +14,15 @@ gem 'pundit'
 gem 'omniauth-google-oauth2', '~> 0.2.1'
 gem 'config'
 gem 'slim'
+
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'pry-rails'
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails'
 end
 
 group :development do
-  gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'listen', '~> 3.0.5'

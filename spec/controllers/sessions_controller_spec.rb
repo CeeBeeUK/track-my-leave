@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe SessionsController, type: :controller do
   let(:user) { create :user }
-  let(:hd) { 'digital.justice.gov.uk' }
+
+  subject { response }
+
   describe '#create' do
     before do
       OmniAuth.config.test_mode = true
@@ -16,6 +18,10 @@ RSpec.describe SessionsController, type: :controller do
             last_name: 'Doe',
             image: 'https://lh3.googleusercontent.com/url/photo.jpg'
         },
+        credentials: {
+            token: '',
+            expires_at: Time.zone.now + 1.month
+        },
         extra: {
           id_info: {
             hd: hd
@@ -23,41 +29,35 @@ RSpec.describe SessionsController, type: :controller do
         }
       )
       request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:google]
+      get :create
     end
-    context 'when a user exists' do
 
-      subject { response }
+    context 'when the applicant is in the correct domain' do
+      let(:hd) { 'digital.justice.gov.uk' }
 
-      before do
-        allow(User).to receive(:from_omniauth).and_return(user)
-        get :create
-      end
+      before { allow(User).to receive(:from_omniauth).and_return(user) }
 
       it { is_expected.to have_http_status :redirect }
       it { is_expected.to redirect_to :root}
-
       it 'does not display a flash alert' do
         expect(flash[:alert]).to_not be_present
       end
     end
 
-    context 'when the user is in the wrong domain' do
-      let(:hd) { 'personal.gmail' }
-
-      subject { response }
-
-      before do
-        get :create
-      end
-
+    context 'when the applicant is in the wrong domain' do
+      let(:hd) { nil }
       it { is_expected.to have_http_status :redirect }
       it { is_expected.to redirect_to :root}
-
       it 'displays a flash alert' do
         expect(flash[:alert]).to be_present
         expect(flash[:alert]).to eql('The system is only available to MoJ Digital staff using a google mail account')
       end
     end
+  end
 
+  describe '#destroy' do
+    before { get :destroy }
+    it { is_expected.to have_http_status :redirect }
+    it { is_expected.to redirect_to :root}
   end
 end
