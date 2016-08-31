@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+  validates :uid, :provider, :name, presence: true
+
   def self.from_omniauth(auth)
     if valid_domain_for?(auth)
       where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
