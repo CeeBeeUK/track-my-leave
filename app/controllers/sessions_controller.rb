@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     if user
       session[:user_id] = user.id
     else
-      flash[:alert] = 'The system is only available to MoJ Digital staff using a google mail account'
+      flash[:alert] = t('flash.non_moj_digital')
     end
     redirect_to root_path
   end
