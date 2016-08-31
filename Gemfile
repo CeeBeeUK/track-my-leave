@@ -20,6 +20,10 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails'
+  gem 'guard-rspec'
+  gem 'guard-rubocop'
+  gem 'rubocop', require: true
+  gem 'rubocop-rspec', require: false
 end
 
 group :development do
@@ -28,6 +32,8 @@ group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'guard-livereload'
+  gem 'terminal-notifier-guard'
 end
 
 group :test do
