@@ -18,6 +18,6 @@ class User < ApplicationRecord
   private
 
   def self.valid_domain_for?(auth)
-    auth.extra[:raw_info][:hd] == ENV['GOOGLE_DOMAIN']
+    auth.extra[:id_info][:hd] == ENV['GOOGLE_DOMAIN']
   end
 end

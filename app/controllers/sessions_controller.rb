@@ -1,7 +1,11 @@
 class SessionsController < ApplicationController
   def create
     user = User.from_omniauth(request.env['omniauth.auth'])
-    session[:user_id] = user.id if user
+    if user
+      session[:user_id] = user.id
+    else
+      flash[:alert] = 'The system is only available to MoJ Digital staff using a google mail account'
+    end
     redirect_to root_path
   end
 

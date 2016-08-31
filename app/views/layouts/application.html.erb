@@ -9,6 +9,16 @@
   </head>
 
   <body>
+
+  <div>
+    <% flash.each do |key, value| %>
+    <div class="alert-box" class="<%= key %>" data-alert=''>
+      <%= value %>
+    </div>
+    <% end %>
+  </div>
+
+  </div>
   <div>
     <% if current_user %>
         Signed in as <strong><%= current_user.name %></strong>!
