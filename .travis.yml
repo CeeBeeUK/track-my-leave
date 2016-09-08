@@ -10,4 +10,4 @@ addons:
 script:
 - bundle exec rubocop
 - bundle exec rake db:create db:schema:load
-- bundle exec rake spec
+- bundle exec rspec
