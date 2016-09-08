@@ -8,6 +8,6 @@ addons:
   code_climate:
     repo_token: 6443361854a32310f0322138c172c69ed75ac3a1b2c3b1735d7c20b30f8414e8
 script:
-- bundle exec rake rubocop
+- bundle exec rubocop
 - bundle exec rake db:create db:schema:load
 - bundle exec rake spec
