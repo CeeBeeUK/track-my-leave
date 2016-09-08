@@ -3,10 +3,12 @@ class User < ApplicationRecord
   validates :uid, :provider, :name, presence: true
 
   def self.from_omniauth(auth)
-    return unless valid_domain_for?(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
-      user.update(user_hash_from(auth))
-      user.save!
+    if auth.provider == 'google_oauth2'
+      return unless valid_domain_for?(auth)
+      where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
+        user.update(user_hash_from(auth))
+        user.save!
+      end
     end
   end
 
