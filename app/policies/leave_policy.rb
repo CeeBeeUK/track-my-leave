@@ -1,0 +1,3 @@
+class LeavePolicy < BasePolicy
+
+end
