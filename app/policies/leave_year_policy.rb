@@ -1,0 +1,3 @@
+class LeaveYearPolicy < BasePolicy
+
+end
