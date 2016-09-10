@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  has_many :leave_years
+
   validates :uid, :provider, :name, presence: true
 
   def self.from_omniauth(auth)
