@@ -17,7 +17,7 @@ module OmniAuthHelpers
       },
       extra: {
         id_info: {
-          hd: hd
+          hd: 'digital.justice.gov.uk'
         }
       }
     )

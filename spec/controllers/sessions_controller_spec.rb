@@ -7,24 +7,24 @@ RSpec.describe SessionsController, type: :controller do
 
   describe '#create' do
     before do
+      allow(User).to receive(:from_omniauth).and_return(omniauth_returns)
       setup
       get :create
     end
 
     context 'when the applicant is in the correct domain' do
-      let(:hd) { 'digital.justice.gov.uk' }
-
-      before { allow(User).to receive(:from_omniauth).and_return(user) }
+      let(:omniauth_returns) { user }
 
       it { is_expected.to have_http_status :redirect }
       it { is_expected.to redirect_to :root }
+
       it 'does not display a flash alert' do
         expect(flash[:alert]).not_to be_present
       end
     end
 
     context 'when the applicant is in the wrong domain' do
-      let(:hd) { nil }
+      let(:omniauth_returns) { nil }
 
       it { is_expected.to have_http_status :redirect }
       it { is_expected.to redirect_to :root }
