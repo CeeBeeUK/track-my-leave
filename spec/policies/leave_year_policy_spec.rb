@@ -1,28 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe LeaveYearPolicy, type: :policy do
-  #
-  # let(:leave) { create :leave }
-  #
-  # subject(:policy) { described_class.new(user, leave) }
-  #
-  # context 'for staff' do
-  #   let(:user) { build_stubbed(:user) }
-  #
-  #   it { is_expected.not_to permit_action(:index) }
-  #   it { is_expected.not_to permit_action(:new) }
-  #   it { is_expected.not_to permit_action(:create) }
-  #   it { is_expected.not_to permit_action(:edit) }
-  #   it { is_expected.not_to permit_action(:update) }
-  #
-  #   context 'when the user belongs to the office' do
-  #     let(:user) { build_stubbed(:staff, office: office) }
-  #
-  #     it { is_expected.to permit_action(:show) }
-  #   end
-  #
-  #   context 'when the user does not belong to the office' do
-  #     it { is_expected.not_to permit_action(:show) }
-  #   end
-  # end
+
+  let(:user) { build_stubbed(:user) }
+  let(:user2) { build_stubbed(:user) }
+
+  subject(:policy) { described_class.new(user, leave_year) }
+
+  context 'when the user views their own leave_year' do
+    let(:leave_year) { create :leave_year, user: user }
+
+    it { is_expected.to permit_action(:show) }
+  end
+
+  context 'when the user tries to view another users leave_year' do
+    let(:leave_year) { create :leave_year, user: user2 }
+
+    it { is_expected.not_to permit_action(:show) }
+  end
 end
