@@ -13,7 +13,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'pundit'
 gem 'omniauth-google-oauth2', '~> 0.2.1'
 gem 'config'
-gem 'slim'
+gem 'slim-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
