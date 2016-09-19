@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'user/new'
-  get 'user/:id', to: 'user#show'
+  get 'user/:id', to: 'user#show', as: 'user'
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
