@@ -4,12 +4,6 @@ RSpec.describe UserController, type: :controller do
 
   subject { response }
 
-  describe 'GET #new' do
-    before { get :new }
-
-    it { is_expected.to have_http_status(:success) }
-  end
-
   describe 'GET #show' do
     let(:current_user) { create :user }
 

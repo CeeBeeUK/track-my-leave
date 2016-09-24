@@ -1,7 +1,4 @@
 class UserController < ApplicationController
-  def new
-  end
-
   def show
     authorize user
   end
