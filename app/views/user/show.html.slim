@@ -1,3 +1,11 @@
 h1 Profile for #{@user.name}
 
-=@user.inspect
+.summary-section
+  .grid-row
+    .column-one-third Name
+    .column-two-thirds =@user.name
+  .grid-row
+    .column-one-third Leave year starts
+    .column-two-thirds #{Date::MONTHNAMES[@user.start_month]} #{@user.start_day.ordinalize}
+
+=link_to 'Edit user', edit_user_path(@user) if policy(@user).edit?
