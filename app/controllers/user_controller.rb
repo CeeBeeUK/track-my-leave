@@ -3,6 +3,10 @@ class UserController < ApplicationController
     authorize user
   end
 
+  def edit
+    authorize user
+  end
+
   private
 
   def user

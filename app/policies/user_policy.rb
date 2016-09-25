@@ -10,6 +10,10 @@ class UserPolicy
     @record == @user
   end
 
+  def edit?
+    @record == user
+  end
+
   def scope
     Pundit.policy_scope!(user, record.class)
   end
