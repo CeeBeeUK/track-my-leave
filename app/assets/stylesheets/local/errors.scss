@@ -1,0 +1,98 @@
+.field_with_errors input {
+  border-color: $error-colour;
+}
+
+.form-group > .field_with_errors {
+  border-left: 2px solid $error-colour;
+  padding-left: 10px;
+}
+
+div.form-group > .row.collapse div.field_with_errors label:not(.inline) {
+  border-left: 2px solid $error-colour;
+  padding-left: 10px;
+  margin-top: 1.5rem;
+}
+
+div.form-group > .row.collapse div.field_with_errors label.error {
+  margin-top: 0rem;
+}
+
+
+div.form-group div.field_with_errors + div.row.collapse,
+div.form-group div.field_with_errors + div.options.radio,
+div.form-group div.field_with_errors + input[type="hidden"] + div.options.radio,
+div.form-group div.field_with_errors + .field-wrapper {
+  border-left: 2px solid $error-colour;
+  padding-left: 10px;
+}
+
+div.form-group div.field_with_errors + .field-wrapper {
+  border-right: 0;
+  border-top: 0;
+  border-bottom: 0;
+  width: 100%;
+
+  .prefix {
+    border: 1px solid $grey-2;
+    border-right: none;
+    padding-bottom: 4px;
+  }
+}
+
+.field-wrapper {
+  .field_with_errors {
+    display: inline-block;
+    width: 85%;
+
+    input {
+      border: 1px solid $grey-2;
+      border-left: none;
+    }
+  }
+}
+
+div.warning {
+  border-left: 2px solid $grey-1;
+  padding-left: 10px;
+  color: $grey-1;
+}
+
+div.options.radio label:first-child {
+  margin-top: 0rem;
+}
+div.options.radio div.options .option:last-child label {
+  margin-bottom: 0rem;
+}
+
+
+.field_with_errors label.error {
+  color: $error-colour;
+  margin-top: 0rem;
+}
+
+div.row.collapse div.field_with_errors input {
+  margin-bottom: 0rem;
+  padding-bottom: 0rem;
+}
+
+div.form-group div.row.collapse div.field_with_errors label {
+  margin-top: 0rem;
+}
+
+.page-error {
+  padding: $gutter $gutter-half;
+  background-color: #ffcccc;
+  border: 1px solid $error-colour;
+}
+
+.dwp-restored {
+  padding: $gutter $gutter-half;
+  background-color: $grass-green-25;
+  border: 1px solid $grass-green;
+}
+
+.dwp-warning {
+  padding: $gutter $gutter-half;
+  background-color: $orange-25;
+  border: 1px solid $orange;
+}
