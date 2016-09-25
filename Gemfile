@@ -14,6 +14,10 @@ gem 'pundit'
 gem 'omniauth-google-oauth2', '~> 0.2.1'
 gem 'config'
 gem 'slim-rails'
+gem 'govuk_frontend_toolkit'
+gem 'govuk_elements_rails'
+gem 'moj_template', '~> 0.23.2'
+gem 'govuk_elements_form_builder', git: 'https://github.com/ministryofjustice/govuk_elements_form_builder.git'
 
 group :development, :test do
   gem 'byebug', platform: :mri
