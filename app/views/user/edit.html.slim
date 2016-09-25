@@ -1,0 +1,9 @@
+h1 Edit your profile
+
+=form_for @user do |f|
+  .form-group
+    = f.label :name, class: 'form-label'
+    = f.label :name, @user.errors[:name].join(', '), class: 'error' if @user.errors[:name].present?
+    = f.text_field :name, {class: 'form-control'}
+
+  = f.submit class: 'button util_mt-medium'
