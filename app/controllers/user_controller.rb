@@ -7,16 +7,16 @@ class UserController < ApplicationController
     authorize user
   end
 
-  # def update
-  #   user.assign_attributes(user_params)
-  #   authorize user
-  #
-  #   if user.save
-  #     flash[:notice] = 'Profile was successfully updated'
-  #
-  #     redirect_to update_redirect_path
-  #   end
-  # end
+  def update
+    user.assign_attributes(user_params)
+    authorize user
+
+    if user.save
+      flash[:notice] = 'Profile was successfully updated'
+
+      redirect_to action: :show
+    end
+  end
 
   private
 
