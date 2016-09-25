@@ -1,9 +1,21 @@
 h1 Edit your profile
 
 =form_for @user do |f|
+  -if @user.errors.any?
+    #error_explanation
+      h2 ="#{pluralize(@user.errors.count, "error")} prohibited this post from being saved:"
+
+      ul
+        -@user.errors.full_messages.each do |msg|
+          li= msg
   .form-group
     = f.label :name, class: 'form-label'
-    = f.label :name, @user.errors[:name].join(', '), class: 'error' if @user.errors[:name].present?
-    = f.text_field :name, {class: 'form-control'}
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :start_month, class: 'form-label'
+    = f.text_field :start_month, class: 'form-control'
+  .form-group
+    = f.label :start_day, class: 'form-label'
+    = f.text_field :start_day, class: 'form-control'
 
   = f.submit class: 'button util_mt-medium'
