@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pundit
   after_action :verify_authorized
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   protect_from_forgery with: :exception
   helper_method :current_user
@@ -8,8 +9,6 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
-
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   private
 

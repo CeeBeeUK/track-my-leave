@@ -9,6 +9,7 @@ RSpec.describe UserPolicy, type: :policy do
     let(:subject_user) { accessing_user }
     it { is_expected.to permit_action(:show) }
     it { is_expected.to permit_action(:edit) }
+    it { is_expected.to permit_action(:update) }
   end
 
   context 'on someone else`s account' do
@@ -16,5 +17,6 @@ RSpec.describe UserPolicy, type: :policy do
 
     it { is_expected.not_to permit_action(:show) }
     it { is_expected.not_to permit_action(:edit) }
+    it { is_expected.not_to permit_action(:update) }
   end
 end
