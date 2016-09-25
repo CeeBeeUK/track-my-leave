@@ -12,9 +12,11 @@ class UserController < ApplicationController
     authorize user
 
     if user.save
-      flash[:notice] = 'Profile was successfully updated'
+      flash[:notice] = 'User successfully updated'
 
-      redirect_to action: :show
+      redirect_to user
+    else
+      render :edit
     end
   end
 
