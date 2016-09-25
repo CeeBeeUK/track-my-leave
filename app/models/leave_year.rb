@@ -4,6 +4,6 @@ class LeaveYear < ActiveRecord::Base
   validates :starts_on, :entitlement, :carried_forward, presence: true
 
   def self.current_for(user)
-    LeaveYear.find_by(user: user)
+    LeaveYear.where(user: user).last
   end
 end
