@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
   validates :uid, :provider, :name, presence: true
   validates :start_month, inclusion: (1..12)
+  validates :start_day, inclusion: (1..31)
 
   def self.from_omniauth(auth)
     if auth.provider == 'google_oauth2'

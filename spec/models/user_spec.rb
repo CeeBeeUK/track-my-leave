@@ -38,6 +38,34 @@ RSpec.describe User, type: :model do
       end
     end
 
+    describe 'start_day' do
+      before { user.start_day = start_day }
+
+      subject { user }
+
+      context 'when start_day is nil' do
+        let(:start_day) { nil }
+
+        it { is_expected.to be_invalid }
+      end
+
+      (1..31).each do |day|
+        context "when start_day is #{day}" do
+          let(:start_day) { day }
+
+          it { is_expected.to be_valid }
+        end
+      end
+
+      %w[0 32 foo].each do |day|
+        context "when start_day is #{day}" do
+          let(:start_day) { day }
+
+          it { is_expected.to be_invalid }
+        end
+      end
+    end
+
     # context 'validations' do
     #   it 'is invalid with no name' do
     #     office = build(:invalid_office)
