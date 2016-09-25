@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :leave_years
 
   validates :uid, :provider, :name, presence: true
+  validates :start_month, inclusion: (1..12)
 
   def self.from_omniauth(auth)
     if auth.provider == 'google_oauth2'
