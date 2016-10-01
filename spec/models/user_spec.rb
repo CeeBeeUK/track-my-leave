@@ -65,23 +65,15 @@ RSpec.describe User, type: :model do
         end
       end
     end
-
-    # context 'validations' do
-    #   it 'is invalid with no name' do
-    #     office = build(:invalid_office)
-    #     expect(office).not_to be_valid
-    #     expect(office.errors[:name]).to eq ['Enter the office name']
-    #   end
-    #
-    #   it 'must have a unique name' do
-    #     original = create(:office)
-    #     duplicate = build(:office, name: original.name)
-    #     expect(duplicate).to be_invalid
-    #   end
-    # end
   end
 
-  describe '#from_omniauth' do
+  describe '.from_omniauth' do
 
+  end
+
+  describe '#leave_year_starts' do
+    subject { user.leave_year_starts }
+
+    it { is_expected.to eql 'January 1st' }
   end
 end

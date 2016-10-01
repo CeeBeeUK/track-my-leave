@@ -25,6 +25,13 @@ module OmniAuthHelpers
   end
 end
 
+module IntegrationSpecHelper
+  def login_with_oauth(service = :google)
+    visit "/auth/#{service}"
+  end
+end
+
 RSpec.configure do |c|
-  c.include OmniAuthHelpers, type: :controller
+  c.include OmniAuthHelpers, type: [:controller, :feature]
+  c.include IntegrationSpecHelper, type: :request
 end

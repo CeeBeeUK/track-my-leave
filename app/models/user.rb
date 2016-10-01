@@ -29,4 +29,8 @@ class User < ApplicationRecord
       oauth_expires_at: Time.zone.at(auth.credentials.expires_at)
     }
   end
+
+  def leave_year_starts
+    "#{Date::MONTHNAMES[start_month]} #{start_day.ordinalize}"
+  end
 end

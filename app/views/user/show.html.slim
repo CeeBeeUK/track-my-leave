@@ -7,6 +7,6 @@ header
     .column-two-thirds =@user.name
   .grid-row
     .column-one-third Leave year starts
-    .column-two-thirds #{Date::MONTHNAMES[@user.start_month]} #{@user.start_day.ordinalize}
+    .column-two-thirds @user.leave_year_starts
 
 =link_to 'Edit user', edit_user_path(@user) if policy(@user).edit?
