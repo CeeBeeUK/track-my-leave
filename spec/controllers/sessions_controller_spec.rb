@@ -16,7 +16,7 @@ RSpec.describe SessionsController, type: :controller do
       let(:omniauth_returns) { user }
 
       it { is_expected.to have_http_status :redirect }
-      it { is_expected.to redirect_to :root }
+      it { is_expected.to redirect_to user_path(user.id) }
 
       it 'does not display a flash alert' do
         expect(flash[:alert]).not_to be_present
